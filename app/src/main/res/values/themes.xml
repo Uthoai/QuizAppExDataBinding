@@ -1,8 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.QuizAppExDataBinding" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.QuizAppExDataBinding" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/colorPrimary</item>
+         <item name="colorOnPrimary">@color/white</item>
+         <item name="colorPrimaryVariant">@color/colorPrimary</item>
+         <item name="android:statusBarColor">@color/colorPrimary</item>
+
+        <!--<item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary</item>
+        <item name="colorOnSecondaryContainer">@color/colorPrimary</item>-->
     </style>
 
     <style name="Theme.QuizAppExDataBinding" parent="Base.Theme.QuizAppExDataBinding" />
