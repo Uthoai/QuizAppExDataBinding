@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.safeArgs)
 }
 
 android {
@@ -33,6 +34,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    dataBinding {
+        enable = true
+    }
+    dataBinding {
+        enable = true
+    }
+
+    sourceSets {
+        getByName("main").java.srcDirs("build/generated/source/navigation-args")
+    }
+
 }
 
 dependencies {
@@ -45,4 +57,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.log.timber)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 }
