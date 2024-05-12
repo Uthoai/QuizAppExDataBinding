@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".GameWonFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:layout_width="260dp"
-        android:layout_height="300dp"
-        android:src="@drawable/you_win"/>
+    <data>
+        <variable
+            name="gameWon"
+            type="com.example.quizappexdatabinding.GameWonFragment" />
+    </data>
 
-    <Button
-        android:id="@+id/btn_playAgain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/play_again"
-        android:textSize="18sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".GameWonFragment">
+
+        <ImageView
+            android:layout_width="260dp"
+            android:layout_height="300dp"
+            android:src="@drawable/you_win" />
+
+        <TextView
+            android:id="@+id/scoreBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Score: "
+            android:text="@{gameWon.scoreBoard}"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_playAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_again"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
