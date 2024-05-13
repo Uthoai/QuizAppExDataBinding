@@ -8,4 +8,5 @@
     <string name="try_again">Try Again</string>
 
     <string name="title_android_quiz_question">Android Quiz (%1$d/%2$d)</string>
+    <string name="share">Share</string>
 </resources>

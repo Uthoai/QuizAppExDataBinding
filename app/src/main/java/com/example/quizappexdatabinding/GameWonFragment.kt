@@ -1,12 +1,17 @@
 package com.example.quizappexdatabinding
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
 import com.example.quizappexdatabinding.databinding.FragmentGameWonBinding
 
 class GameWonFragment : Fragment() {
@@ -25,10 +30,35 @@ class GameWonFragment : Fragment() {
 
         scoreBoard = "Score: $score/$totalQuestion"
 
-        binding.btnPlayAgain.setOnClickListener {
-            findNavController().navigate(R.id.action_gameWonFragment_to_gameFragment)
-        }
+        setUpMenu()
+
 
         return binding.root
+    }
+
+    private fun shareAchievement() {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain")
+            .putExtra(Intent.EXTRA_TEXT,scoreBoard)
+        startActivity(shareIntent)
+    }
+
+    private fun setUpMenu() {
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object :MenuProvider{
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.win_menu,menu )
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when(menuItem.itemId){
+                    R.id.share -> {
+                        shareAchievement()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        })
     }
 }
